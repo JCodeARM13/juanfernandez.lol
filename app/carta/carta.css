@@ -1,0 +1,353 @@
+.carta-shell {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  padding: 64px 20px 120px;
+  overflow: hidden;
+}
+
+/* Aurora glows sutiles para que el liquid glass tenga algo abajo */
+.carta-aurora {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(50% 35% at 80% 10%, rgba(255, 0, 191, 0.10) 0%, transparent 65%),
+    radial-gradient(45% 35% at 15% 85%, rgba(31, 95, 164, 0.12) 0%, transparent 65%),
+    radial-gradient(40% 30% at 50% 50%, rgba(150, 180, 255, 0.06) 0%, transparent 70%);
+}
+
+.carta {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.carta-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.carta-title {
+  font-family: "Permanent Marker", "Caveat", cursive;
+  font-weight: 400;
+  font-size: clamp(56px, 11vw, 108px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0 0 28px;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+}
+
+.carta-greeting {
+  font-family: "Caveat", cursive;
+  font-size: clamp(26px, 4.5vw, 38px);
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 0 16px;
+  color: var(--fg);
+}
+
+.carta-lyft {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  color: #ff00bf;
+}
+
+.carta-date {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Liquid glass que envuelve el cuerpo de la carta */
+.carta-glass {
+  position: relative;
+  border-radius: 28px;
+  padding: 56px 44px 48px;
+  background: color-mix(in oklab, var(--surface) 70%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid color-mix(in oklab, var(--fg) 8%, transparent);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.5) inset,
+    0 -1px 0 0 rgba(0, 0, 0, 0.04) inset,
+    0 30px 60px -20px rgba(0, 0, 0, 0.18),
+    0 12px 30px -10px rgba(0, 0, 0, 0.10);
+}
+:root.dark .carta-glass {
+  background: color-mix(in oklab, var(--surface) 55%, transparent);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
+    0 -1px 0 0 rgba(0, 0, 0, 0.4) inset,
+    0 30px 60px -20px rgba(0, 0, 0, 0.5),
+    0 12px 30px -10px rgba(0, 0, 0, 0.3);
+}
+
+.carta-intro {
+  margin-bottom: 48px;
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+  font-style: italic;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.55;
+  color: var(--fg);
+  text-align: center;
+}
+.carta-intro p {
+  margin: 0 0 24px;
+}
+.carta-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.carta-body {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--fg);
+}
+.carta-body p {
+  margin: 0 0 24px;
+}
+.carta-body p:last-child {
+  margin-bottom: 0;
+}
+.carta-body strong {
+  font-weight: 600;
+  color: var(--fg);
+}
+.carta-body em {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Separador (sección en español) — más visible que antes */
+.carta-divider {
+  margin: 56px -8px;
+  padding: 32px 28px;
+  text-align: center;
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+  font-size: clamp(18px, 2.1vw, 22px);
+  line-height: 1.55;
+  color: var(--fg);
+  border-top: 1px solid color-mix(in oklab, var(--fg) 10%, transparent);
+  border-bottom: 1px solid color-mix(in oklab, var(--fg) 10%, transparent);
+  background: color-mix(in oklab, var(--circle) 6%, transparent);
+  border-radius: 14px;
+}
+.carta-divider em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--fg);
+}
+
+.carta-spanish {
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+  font-style: italic;
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.75;
+  text-align: center;
+  color: var(--fg);
+  max-width: 620px;
+  margin: 0 auto;
+}
+.carta-spanish p {
+  margin: 0 0 36px;
+}
+.carta-spanish p:last-child {
+  margin-bottom: 0;
+}
+.carta-spanish strong {
+  font-style: normal;
+  font-weight: 600;
+}
+
+.carta-footer {
+  margin-top: 64px;
+  text-align: center;
+}
+.carta-cierre {
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+  font-style: italic;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.5;
+  margin: 0 0 32px;
+  color: var(--fg);
+}
+.carta-firma {
+  font-family: "Caveat", cursive;
+  font-size: clamp(38px, 6vw, 56px);
+  font-weight: 700;
+  color: var(--fg);
+  margin: 0;
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+/* Descargas, escondidas pero accesibles */
+.carta-downloads {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid color-mix(in oklab, var(--fg) 6%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+.carta-download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  text-decoration: none;
+  opacity: 0.55;
+  transition: opacity 200ms ease, color 200ms ease;
+}
+.carta-download-link:hover {
+  opacity: 1;
+  color: var(--circle);
+}
+.carta-download-sep {
+  color: var(--muted);
+  opacity: 0.4;
+}
+
+/* ─────────── Gate (entrada) ─────────── */
+.carta-state-loading {
+  min-height: 60vh;
+}
+
+.carta-gate {
+  position: relative;
+  z-index: 1;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+.carta-gate-inner {
+  max-width: 460px;
+}
+.carta-gate-eyebrow {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+.carta-gate-title {
+  font-family: "Permanent Marker", "Caveat", cursive;
+  font-weight: 400;
+  font-size: clamp(48px, 9vw, 80px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0 0 28px;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+}
+.carta-gate-meta {
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+  font-style: italic;
+  font-size: clamp(17px, 2.2vw, 21px);
+  line-height: 1.5;
+  color: var(--fg);
+  opacity: 0.8;
+  margin: 0 0 36px;
+}
+.carta-gate-button {
+  appearance: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 1px solid var(--circle);
+  background: var(--circle);
+  color: white;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+  box-shadow: 0 8px 24px -8px color-mix(in oklab, var(--circle) 60%, transparent);
+}
+.carta-gate-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px -8px color-mix(in oklab, var(--circle) 70%, transparent);
+}
+.carta-gate-foot {
+  margin: 24px 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+/* ─────────── Contador de lecturas ─────────── */
+.carta-view-count {
+  position: relative;
+  z-index: 1;
+  margin: 36px auto 0;
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+  opacity: 0.65;
+}
+
+/* ─────────── Estado destruido (sólo pelícano) ─────────── */
+.carta-destroyed {
+  position: relative;
+  z-index: 1;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 24px;
+  text-align: center;
+}
+.carta-pelican-svg {
+  color: var(--fg);
+  opacity: 0.85;
+}
+.carta-destroyed-text {
+  margin: 0;
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--muted);
+  max-width: 360px;
+}
+
+@media (max-width: 600px) {
+  .carta-shell { padding: 48px 16px 80px; }
+  .carta-header { margin-bottom: 40px; }
+  .carta-glass { padding: 40px 24px 36px; border-radius: 22px; }
+  .carta-body { font-size: 16px; line-height: 1.8; }
+  .carta-divider { margin: 40px -4px; padding: 24px 16px; }
+  .carta-footer { margin-top: 48px; }
+  .carta-downloads { margin-top: 36px; padding-top: 20px; }
+}
