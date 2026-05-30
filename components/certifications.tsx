@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 type Certification = {
-  issuer: "Anthropic" | "Platzi" | "Udemy";
+  issuer: "Anthropic" | "Platzi" | "Udemy" | "Domestika";
   issuerLogo: string;
   title: string;
   date: string; // YYYY-MM-DD
@@ -14,6 +14,48 @@ type Certification = {
 };
 
 const CERTIFICATIONS: Certification[] = [
+  {
+    issuer: "Anthropic",
+    issuerLogo: "/issuers/anthropic.png",
+    title: "Introduction to subagents",
+    date: "2026-05-19",
+    file: "/certificates/anthropic-introduction-subagents.pdf",
+  },
+  {
+    issuer: "Anthropic",
+    issuerLogo: "/issuers/anthropic.png",
+    title: "Claude Code 101",
+    date: "2026-05-15",
+    file: "/certificates/anthropic-claude-code-101.pdf",
+  },
+  {
+    issuer: "Anthropic",
+    issuerLogo: "/issuers/anthropic.png",
+    title: "Introduction to Model Context Protocol",
+    date: "2026-05-15",
+    file: "/certificates/anthropic-introduction-mcp.pdf",
+  },
+  {
+    issuer: "Anthropic",
+    issuerLogo: "/issuers/anthropic.png",
+    title: "AI Fluency for Small Businesses",
+    date: "2026-05-15",
+    file: "/certificates/anthropic-ai-fluency-small-businesses.pdf",
+  },
+  {
+    issuer: "Domestika",
+    issuerLogo: "/issuers/domestika.png",
+    title: "Crea Cortometrajes con Inteligencia Artificial",
+    date: "2026-05-05",
+    file: "/certificates/domestika-cortometrajes-ia.pdf",
+  },
+  {
+    issuer: "Domestika",
+    issuerLogo: "/issuers/domestika.png",
+    title: "Diseño de portadas de cómic: libera tu creatividad",
+    date: "2026-04-30",
+    file: "/certificates/domestika-diseno-portadas-comic.pdf",
+  },
   {
     issuer: "Anthropic",
     issuerLogo: "/issuers/anthropic.png",
