@@ -15,6 +15,7 @@ import { Footer } from "@/components/footer";
 import { GlassEffect, GlassFilter } from "@/components/glass";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { DebugGrid } from "@/components/debug-grid";
+import { ScrollProgress } from "@/components/scroll-progress";
 
 const WHATSAPP_URL = "https://wa.me/525548869123";
 
@@ -127,6 +128,7 @@ export default function Page() {
       >
         <GlassFilter />
         <ThemeToggle />
+        {!loading && <ScrollProgress />}
         <DebugGrid />
 
         {/* Bloque 1: Hero con círculo azul que crece + cross-fade B/N → color */}
