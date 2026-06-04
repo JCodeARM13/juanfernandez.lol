@@ -4,6 +4,7 @@ date: "2026-01-08"
 description: "Y la gente que lo repite no está mintiendo. Está repitiendo lo que le enseñaron. Eso es diferente, y peor."
 author: "Juan Fernández"
 tags: ["mexico", "tecnologia", "historia", "mitos"]
+cover: "/images/blog/gonzalez-camarena-mito-inventor.jpg"
 ---
 
 # Guillermo González Camarena no inventó la televisión a color

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllPosts, formatPostDate } from "@/lib/blog";
+import { BlogGallery } from "@/components/blog-gallery";
 import "./blog.css";
 
 export const metadata: Metadata = {
@@ -33,6 +34,12 @@ export default function BlogIndexPage() {
           personas. Sin filtros, sin agenda.
         </p>
       </header>
+
+      {posts.length > 0 && (
+        <div className="blog-gallery-wrap">
+          <BlogGallery posts={posts} />
+        </div>
+      )}
 
       <section className="blog-list">
         {posts.length === 0 && (

@@ -48,6 +48,10 @@
   margin: 0;
 }
 
+.blog-gallery-wrap {
+  margin-bottom: 64px;
+}
+
 .blog-list {
   display: grid;
   gap: 28px;

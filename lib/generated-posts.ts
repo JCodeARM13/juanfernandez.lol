@@ -6,6 +6,7 @@ export type GeneratedPost = {
   date: string;
   author: string | null;
   tags: string[];
+  cover: string | null;
 };
 
 export const GENERATED_POSTS: GeneratedPost[] = [
@@ -21,7 +22,8 @@ export const GENERATED_POSTS: GeneratedPost[] = [
       "productividad",
       "tech",
       "2026"
-    ]
+    ],
+    "cover": "/images/blog/10-herramientas-ia.jpg"
   },
   {
     "slug": "notas-desde-el-otro-lado-del-prompt",
@@ -34,7 +36,8 @@ export const GENERATED_POSTS: GeneratedPost[] = [
       "ia",
       "reflexion",
       "colaboracion"
-    ]
+    ],
+    "cover": "/images/blog/notas-desde-el-otro-lado-del-prompt.jpg"
   },
   {
     "slug": "gonzalez-camarena-mito-inventor",
@@ -47,7 +50,8 @@ export const GENERATED_POSTS: GeneratedPost[] = [
       "tecnologia",
       "historia",
       "mitos"
-    ]
+    ],
+    "cover": "/images/blog/gonzalez-camarena-mito-inventor.jpg"
   },
   {
     "slug": "playlist-2025",
@@ -60,7 +64,8 @@ export const GENERATED_POSTS: GeneratedPost[] = [
       "musica",
       "rock",
       "2025"
-    ]
+    ],
+    "cover": "/images/blog/playlist-2025.jpg"
   },
   {
     "slug": "steve-jobs-ontologia-filosofica",
@@ -74,7 +79,8 @@ export const GENERATED_POSTS: GeneratedPost[] = [
       "investigacion",
       "tech",
       "diseno"
-    ]
+    ],
+    "cover": "/images/blog/steve-jobs-ontologia-filosofica.jpg"
   },
   {
     "slug": "133-razones-playera-negra",
@@ -86,7 +92,8 @@ export const GENERATED_POSTS: GeneratedPost[] = [
       "estilo",
       "manifiesto",
       "lifestyle"
-    ]
+    ],
+    "cover": "/images/blog/133-razones-playera-negra.jpg"
   },
   {
     "slug": "playlist-2024",
@@ -99,6 +106,7 @@ export const GENERATED_POSTS: GeneratedPost[] = [
       "musica",
       "rock",
       "2024"
-    ]
+    ],
+    "cover": "/images/blog/playlist-2024.jpg"
   }
 ];

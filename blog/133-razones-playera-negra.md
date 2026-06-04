@@ -4,7 +4,7 @@ description: "Mi manifiesto, mi defensa legal y mi respuesta automatizada para l
 date: 2025-02-23
 author: Juan Carlos Fernández Varela
 tags: [estilo, manifiesto, lifestyle]
-cover: null
+cover: "/images/blog/133-razones-playera-negra.jpg"
 ---
 
 # 133 razones por las que siempre usar playera negra es la mejor forma de vestir

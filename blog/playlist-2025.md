@@ -4,7 +4,7 @@ description: "13 canciones principales, 3 menciones especiales y mucho hard rock
 date: 2025-12-28
 author: Juan Carlos Fernández Varela
 tags: [playlist, musica, rock, 2025]
-cover: null
+cover: "/images/blog/playlist-2025.jpg"
 ---
 
 # Mi Playlist del 2025: 13 canciones, 3 menciones especiales y un año de rock

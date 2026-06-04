@@ -4,7 +4,7 @@ description: "13 canciones principales, 4 menciones especiales y un año donde c
 date: 2024-12-28
 author: Juan Carlos Fernández Varela
 tags: [playlist, musica, rock, 2024]
-cover: null
+cover: "/images/blog/playlist-2024.jpg"
 ---
 
 # Mi Playlist del 2024: 13 canciones, 4 menciones especiales y un año de Tommy

@@ -4,6 +4,7 @@ date: "2026-04-28"
 description: "Mi stack real de IA en 2026. Sin hype, sin afiliados, sin pretender que uso 47 apps. Estas son las 10 que sobrevivieron al filtro diario."
 author: "Juan Fernández"
 tags: ["ia", "herramientas", "productividad", "tech", "2026"]
+cover: "/images/blog/10-herramientas-ia.jpg"
 ---
 
 # Las 10 herramientas de inteligencia artificial que siempre uso

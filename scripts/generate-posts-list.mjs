@@ -30,6 +30,7 @@ function read() {
           date,
           author: data.author ?? null,
           tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+          cover: data.cover ?? null,
         };
       } catch {
         return null;
@@ -48,6 +49,7 @@ const body = `export type GeneratedPost = {
   date: string;
   author: string | null;
   tags: string[];
+  cover: string | null;
 };
 
 export const GENERATED_POSTS: GeneratedPost[] = ${JSON.stringify(posts, null, 2)};

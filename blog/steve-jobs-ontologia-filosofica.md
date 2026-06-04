@@ -4,6 +4,7 @@ date: "2025-10-05"
 description: "Una investigación en ocho dominios filosóficos sobre el hombre detrás del mito. Metafísica, epistemología, ética y la fractura estructural de un pensamiento coherente."
 author: "Juan Fernández"
 tags: ["steve-jobs", "filosofia", "investigacion", "tech", "diseno"]
+cover: "/images/blog/steve-jobs-ontologia-filosofica.jpg"
 ---
 
 # La ontología filosófica de Steve Jobs: lo que creía de verdad
