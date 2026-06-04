@@ -26,7 +26,7 @@ Arrancar con Radiohead es arrancar en modo honesto.
 Esto fue decir adios a inDrive. Me deprimí durante ese tiempo y mis emociones no estaban ahi. "No surprises" es eso: no me sorprende, la vida pasa. Es melancolica, un poquito dramatica, triste. Y a veces estar asi esta muy bien.
 
 <!-- IMAGEN: Portada de OK Computer de Radiohead -->
-![Portada de OK Computer, Radiohead, 1997](PLACEHOLDER_ok_computer.jpg)
+![Portada de OK Computer, Radiohead, 1997](/blog/playlist-2024/ok-computer.png)
 
 ## 2. The Best Of Times — Styx
 
@@ -39,7 +39,7 @@ Me encanta como va creciendo poco a poco. Los mejores momentos son estar con alg
 1981. "Raiders March" es el tema principal de *Raiders of the Lost Ark*, compuesto por John Williams y grabado con la London Symphony Orchestra. Williams ya habia definido el sonido de *Star Wars* y *Superman*, y con Indiana Jones creo otro tema inmortal: una fanfarria de metales que suena a aventura pura. El tema ha acompañado las cinco peliculas de la franquicia.
 
 <!-- IMAGEN: Indiana Jones, o John Williams dirigiendo -->
-![John Williams / Indiana Jones](PLACEHOLDER_raiders_march.jpg)
+![John Williams / Indiana Jones](/blog/playlist-2024/raiders-march.jpg)
 
 Soy fan de John Williams. Pero ademas, en 2024 estaba viajando mucho y repetia esta rola constantemente. Yo no soy turista, soy explorador. Me trepo en un camion y hasta donde llegue. A veces lo mas grandioso esta en las cosas que no te cuentan, no en las fotos editadas de una pagina web. La realidad esta del otro lado del arco iris, Dorothy. Estaba en Guatemala, entre ruinas y selva. "Raiders March" era el soundtrack perfecto.
 
@@ -50,7 +50,7 @@ Soy fan de John Williams. Pero ademas, en 2024 estaba viajando mucho y repetia e
 "Go To The Mirror" cantada por Jack Nicholson suena horrible. Pero suena muy bien, porque es muy autentica. Aunque suene de la verga, suena muy bien. Aparte, el sintetizador que hay por ahi es increible.
 
 <!-- IMAGEN: Jack Nicholson en la pelicula Tommy (1975) -->
-![Jack Nicholson como El Especialista en Tommy, 1975](PLACEHOLDER_nicholson_tommy.jpg)
+![Jack Nicholson como El Especialista en Tommy, 1975](/blog/playlist-2024/nicholson-tommy.jpg)
 
 ## 5. Babe — Styx
 
@@ -69,7 +69,7 @@ Esta es la version "en serio". Bien cantada, bien producida. Me gusta por lo que
 1968. Originalmente compuesta como "Quando m'innamoro" por Daniele Pace, Mario Panzeri y Roberto Livraghi para el Festival de Sanremo de 1968. Barry Mason escribio la letra en ingles para Engelbert Humperdinck, y su version llego al numero 2 en el Reino Unido y al 19 en Estados Unidos. En 2022, la cancion tuvo un renacimiento masivo cuando aparecio en la escena inicial del primer episodio de *Moon Knight* de Marvel en Disney+. Entro al top 5 de Shazam en Estados Unidos, Mexico y Canada.
 
 <!-- IMAGEN: Moon Knight / escena inicial con A Man Without Love -->
-![Moon Knight, escena inicial con A Man Without Love](PLACEHOLDER_moon_knight.jpg)
+![Moon Knight, escena inicial con A Man Without Love](/blog/playlist-2024/moon-knight.jpg)
 
 La conoci por Moon Knight. A veces una serie te presenta una cancion de 1968 y de repente tiene todo el sentido del mundo.
 
@@ -86,7 +86,7 @@ Puro riff. No necesita mas explicacion. Es puro poder musical.
 Paul McCartney es uno de los grandes seres del mundo. Sir Paul McCartney. Si tuviera que reverenciar o darle respeto a alguien, Paul McCartney lo tiene, y no mucha gente tiene mi respeto. "Hope of Deliverance" tiene una gran guitarra española, y creo que cuando McCartney vino al Foro Sol en Mexico hablo de como esta cancion conecta mucho con la gente latina justamente por ese sonido. Una gran rola.
 
 <!-- IMAGEN: Paul McCartney en vivo o portada de Off the Ground -->
-![Paul McCartney, era Off the Ground, 1993](PLACEHOLDER_mccartney.jpg)
+![Paul McCartney, era Off the Ground, 1993](/blog/playlist-2024/mccartney.jpg)
 
 ## 10. Smash the Mirror — The Who
 
@@ -99,7 +99,7 @@ Estoy obsesionado con ese album. No hay mas que decir.
 1981. Pino D'Angio es un cantante y compositor italiano conocido principalmente por "Ma Quale Idea", el hit de italo disco que sigue sonando en fiestas de medio mundo. "Okay Okay" viene del mismo album, *...Balla!*, y tiene la misma energia: bajo funky, sintetizadores, y la voz de D'Angio coqueteando con la melodia. Es italo disco puro, musica para moverse.
 
 <!-- IMAGEN: Portada de ...Balla! de Pino D'Angio -->
-![Portada de ...Balla!, Pino D'Angio, 1981](PLACEHOLDER_pino_dangio.jpg)
+![Portada de ...Balla!, Pino D'Angio, 1981](/blog/playlist-2024/pino-dangio.jpg)
 
 Es una cancion sexy, seductora, coqueta. Tiene clase. Es como un Jose Jose italiano: "O Sole Mio" a nivel idea. El italiano suena muy bien, y "Okay Okay" es una de esas canciones que simplemente te hacen sentir con estilo.
 
@@ -114,7 +114,7 @@ Seguimos con la obsesion por Tommy. "Tommy, can you hear me?" como pregunta no n
 1973. George Harrison lanzo "Give Me Love" como primer sencillo de *Living in the Material World*. Fue su segundo numero 1 en Estados Unidos despues de "My Sweet Lord". La cancion es una suplica directa: dame amor, dame paz en la Tierra. Harrison la escribio como una oracion, influenciado por su practica espiritual hindú. La produccion es sencilla: guitarra acustica, slide guitar (su marca personal) y cuerdas.
 
 <!-- IMAGEN: George Harrison o portada de Living in the Material World -->
-![George Harrison, Living in the Material World, 1973](PLACEHOLDER_george_harrison.jpg)
+![George Harrison, Living in the Material World, 1973](/blog/playlist-2024/george-harrison.jpg)
 
 George Harrison es el Beatle mas espiritual. Es el Beatle que lo entendio todo sin decir mucho, que se fue como los grandes, en silencio. La gente escandalosa normalmente no entiende las cosas. Harrison interiorizaba las cosas, entendia cosas que los demas Beatles tal vez no llegaron a entender.
 
@@ -151,7 +151,7 @@ Estaba en Oaxaca. Habia terminado con una morra. "Shot In the Dark" era el sound
 1971. Del album *RAM*, el segundo disco solista de McCartney despues de la separacion de los Beatles. "Uncle Albert/Admiral Halsey" es una suite de casi cinco minutos que cambia de genero varias veces: arranca como una balada melancolica, pasa por un interludio de lluvia, se convierte en music hall britanico, y termina con una seccion casi marcial. Linda McCartney canta los coros. Fue el primer numero 1 de McCartney como solista en Estados Unidos.
 
 <!-- IMAGEN: Portada de RAM de Paul McCartney -->
-![Portada de RAM, Paul McCartney, 1971](PLACEHOLDER_ram_cover.jpg)
+![Portada de RAM, Paul McCartney, 1971](/blog/playlist-2024/ram-cover.jpg)
 
 Es una cancion muy tonta. Muy infantil. Es una cancion linda que nadie puede odiar. Me encanta el inicio y el final. RAM no es un album tan conocido porque es de los primeros post-Beatles, pero "Uncle Albert/Admiral Halsey" es una gran cancion. Es divertida, y a veces eso es suficiente.
 

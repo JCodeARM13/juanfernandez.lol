@@ -30,7 +30,7 @@ Guillermo González Camarena nació en 1917 en Guadalajara. En 1942, a los 24 a�
 
 El sistema era ingenioso. Consistía en un adaptador de disco giratorio con filtros de colores RGB que se colocaba frente a una cámara de televisión en blanco y negro estándar para capturar y transmitir señal de color. Era un sistema electromecánico: combinaba componentes electrónicos con piezas físicas en movimiento.
 
-![Diagrama de la patente USPTO 2,296,019: el sistema de adaptador cromoscópico de González Camarena]()
+![Diagrama de la patente USPTO 2,296,019: el sistema de adaptador cromoscópico de González Camarena](/blog/camarena/patente-2296019.png)
 
 Eso es verificable, documentado, y genuinamente impresionante para alguien de su edad y con los recursos disponibles en México en esa época. No hay razón para minimizarlo.
 
