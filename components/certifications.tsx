@@ -2,18 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 
-type Certification = {
-  issuer: "Anthropic" | "Platzi" | "Udemy" | "Domestika";
-  issuerLogo: string;
-  title: string;
-  date: string; // YYYY-MM-DD
-  file: string;
-  hours?: string;
-};
+import { CertShatter, type CertItem } from "@/components/cert-shatter";
 
-const CERTIFICATIONS: Certification[] = [
+const CERTIFICATIONS: CertItem[] = [
   {
     issuer: "Anthropic",
     issuerLogo: "/issuers/anthropic.png",
@@ -146,15 +138,6 @@ const CERTIFICATIONS: Certification[] = [
   },
 ];
 
-const formatDate = (iso: string): string => {
-  const [y, m] = iso.split("-");
-  const months = [
-    "ene", "feb", "mar", "abr", "may", "jun",
-    "jul", "ago", "sep", "oct", "nov", "dic",
-  ];
-  return `${months[parseInt(m, 10) - 1]} ${y}`;
-};
-
 export const Certifications: React.FC = () => {
   return (
     <section
@@ -199,73 +182,7 @@ export const Certifications: React.FC = () => {
           {CERTIFICATIONS.length} certificados · cada uno descargable en PDF
         </p>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-          {CERTIFICATIONS.map((cert, i) => (
-            <motion.li
-              key={cert.file}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{
-                duration: 0.55,
-                delay: Math.min(i, 8) * 0.04,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              <a
-                href={cert.file}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cert-card group relative flex flex-col h-full p-5 md:p-6 rounded-2xl
-                           border transition-all duration-300
-                           hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5"
-                style={{
-                  borderColor: "var(--border)",
-                  background: "var(--surface)",
-                }}
-                aria-label={`${cert.title} — ${cert.issuer} — abrir certificado`}
-              >
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="shrink-0 w-9 h-9 rounded-lg bg-white border flex items-center justify-center"
-                       style={{ borderColor: "var(--border)" }}>
-                    <img
-                      src={cert.issuerLogo}
-                      alt={cert.issuer}
-                      className="w-6 h-6 object-contain"
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs font-semibold tracking-wide">
-                      {cert.issuer}
-                    </span>
-                    <span
-                      className="text-[10px] font-mono uppercase tracking-[0.2em]"
-                      style={{ color: "var(--muted)" }}
-                    >
-                      {formatDate(cert.date)}
-                      {cert.hours ? ` · ${cert.hours}` : ""}
-                    </span>
-                  </div>
-                </div>
-
-                <h3
-                  className="text-lg md:text-xl leading-snug font-normal italic mb-6"
-                  style={{ fontFamily: "'Instrument Serif', serif" }}
-                >
-                  {cert.title}
-                </h3>
-
-                <div
-                  className="mt-auto flex items-center justify-between text-[11px] font-mono uppercase tracking-[0.2em]"
-                  style={{ color: "var(--circle, #1f5fa4)" }}
-                >
-                  <span>Ver certificado</span>
-                  <ArrowUpRight className="w-4 h-4 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                </div>
-              </a>
-            </motion.li>
-          ))}
-        </ul>
+        <CertShatter items={CERTIFICATIONS} />
       </div>
     </section>
   );

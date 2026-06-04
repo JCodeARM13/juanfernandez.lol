@@ -4,6 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
+import { GradientCard } from "@/components/gradient-card";
+
 type Project = {
   number: string;
   title: string;
@@ -97,56 +99,58 @@ export const Projects: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
           {PROJECTS.map((p, i) => (
-            <motion.a
+            <motion.div
               key={p.number}
-              href={p.href || "#"}
-              target={p.href ? "_blank" : undefined}
-              rel={p.href ? "noopener noreferrer" : undefined}
-              onClick={p.href ? undefined : (e) => e.preventDefault()}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="glass-card group relative flex flex-col justify-between rounded-2xl p-6 md:p-8 min-h-[220px] md:min-h-[260px] cursor-default
-                         transition-transform duration-500 hover:-translate-y-1"
             >
-              <div className="relative z-10">
-                <div className="flex items-center justify-between">
-                  <span
-                    className="text-[10px] md:text-xs font-mono tracking-[0.25em]"
-                    style={{ color: "var(--circle, #1f5fa4)" }}
-                  >
-                    {p.number}
-                  </span>
-                  <span
-                    className="text-[10px] md:text-xs font-mono uppercase tracking-[0.2em]"
-                    style={{ color: "var(--muted)" }}
-                  >
-                    {p.status}
-                  </span>
-                </div>
-                <h3 className="mt-6 text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
-                  {p.title}
-                </h3>
-                <p
-                  className="mt-2 text-xs md:text-sm font-mono uppercase tracking-[0.2em]"
-                  style={{ color: "var(--muted)" }}
-                >
-                  {p.domain}
-                </p>
-              </div>
-              <div className="relative z-10 mt-6 flex items-end justify-between gap-4">
-                <p
-                  className="text-sm md:text-[15px] leading-relaxed max-w-xs"
-                  style={{ color: "var(--fg)", opacity: 0.85 }}
-                >
-                  {p.blurb}
-                </p>
-                <ArrowUpRight
-                  className="w-4 h-4 shrink-0 opacity-30 group-hover:opacity-70 transition-opacity"
-                />
-              </div>
-            </motion.a>
+              <a
+                href={p.href || "#"}
+                target={p.href ? "_blank" : undefined}
+                rel={p.href ? "noopener noreferrer" : undefined}
+                onClick={p.href ? undefined : (e) => e.preventDefault()}
+                className="block h-full"
+              >
+                <GradientCard className="glass-card flex h-full flex-col justify-between rounded-2xl p-6 md:p-8 min-h-[220px] md:min-h-[260px] cursor-default transition-transform duration-500 hover:-translate-y-1">
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <span
+                        className="text-[10px] md:text-xs font-mono tracking-[0.25em]"
+                        style={{ color: "var(--circle, #1f5fa4)" }}
+                      >
+                        {p.number}
+                      </span>
+                      <span
+                        className="text-[10px] md:text-xs font-mono uppercase tracking-[0.2em]"
+                        style={{ color: "var(--muted)" }}
+                      >
+                        {p.status}
+                      </span>
+                    </div>
+                    <h3 className="mt-6 text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
+                      {p.title}
+                    </h3>
+                    <p
+                      className="mt-2 text-xs md:text-sm font-mono uppercase tracking-[0.2em]"
+                      style={{ color: "var(--muted)" }}
+                    >
+                      {p.domain}
+                    </p>
+                  </div>
+                  <div className="mt-6 flex items-end justify-between gap-4">
+                    <p
+                      className="text-sm md:text-[15px] leading-relaxed max-w-xs"
+                      style={{ color: "var(--fg)", opacity: 0.85 }}
+                    >
+                      {p.blurb}
+                    </p>
+                    <ArrowUpRight className="w-4 h-4 shrink-0 opacity-30 group-hover:opacity-70 transition-opacity" />
+                  </div>
+                </GradientCard>
+              </a>
+            </motion.div>
           ))}
         </div>
       </div>
