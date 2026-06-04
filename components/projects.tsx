@@ -47,6 +47,15 @@ const PROJECTS: Project[] = [
     status: "Live",
     href: "https://m2m.juanfernandez.lol",
   },
+  {
+    number: "05",
+    title: "SSV",
+    domain: "Herramienta personal",
+    blurb:
+      "Lector RSVP con velocidad increscendo. Pega texto y lee más rápido.",
+    status: "Live",
+    href: "https://ssv.jcfvg.com",
+  },
 ];
 
 export const Projects: React.FC = () => {
