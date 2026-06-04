@@ -230,28 +230,75 @@ body {
   );
 }
 
-/* ── Easter egg: esquirlas de vidrio ──────────────────────────── */
+/* ── Easter egg: esquirlas de vidrio realistas ────────────────── */
 .glass-shard {
   position: absolute;
+  left: 0;
+  top: 0;
   pointer-events: none;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.55),
-    color-mix(in oklab, var(--circle) 30%, rgba(255, 255, 255, 0.15))
+    rgba(255, 255, 255, 0.62) 0%,
+    rgba(255, 255, 255, 0.28) 45%,
+    color-mix(in oklab, var(--circle) 28%, rgba(255, 255, 255, 0.12)) 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 6px 16px rgba(15, 23, 42, 0.2),
+    inset 0 0 10px rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   z-index: 60;
   will-change: transform, opacity;
+  animation: shardFade 1.9s ease-out forwards;
 }
 .dark .glass-shard {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.2),
-    color-mix(in oklab, var(--circle) 35%, rgba(255, 255, 255, 0.05))
+    rgba(255, 255, 255, 0.24) 0%,
+    rgba(255, 255, 255, 0.08) 45%,
+    color-mix(in oklab, var(--circle) 38%, rgba(255, 255, 255, 0.04)) 100%
   );
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.18);
 }
+@keyframes shardFade {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* líneas de cuarteo en el punto de impacto (flash breve) */
+.cert-crack {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 62;
+  animation: crackFade 0.45s ease-out forwards;
+}
+.cert-crack line,
+.cert-crack circle {
+  stroke: rgba(255, 255, 255, 0.92);
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+@keyframes crackFade {
+  0% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .cert-destroy-mode .cert-body {
   position: absolute;
   margin: 0;
