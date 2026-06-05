@@ -38,6 +38,26 @@
     --muted: #6b7280;
     --surface: #f5f5f5;
     --border: rgba(10, 10, 10, 0.1);
+
+    /* Liquid-glass — tokens compartidos (Proyectos + Certificaciones) */
+    --glass-bg: rgba(255, 255, 255, 0.55);
+    --glass-bg-hover: rgba(255, 255, 255, 0.7);
+    --glass-blur: 18px;
+    --glass-saturate: 140%;
+    --glass-border: rgba(255, 255, 255, 0.55);
+    --glass-bevel-tl: rgba(255, 255, 255, 0.75);
+    --glass-bevel-br: rgba(255, 255, 255, 0.32);
+    --glass-spec: rgba(255, 255, 255, 0.55);
+    --glass-sheen: rgba(255, 255, 255, 0.35);
+    --glass-shadow:
+      0 1px 1px rgba(15, 23, 42, 0.04),
+      0 8px 28px rgba(15, 23, 42, 0.08),
+      0 2px 6px rgba(15, 23, 42, 0.05);
+    --glass-shadow-hover:
+      0 1px 1px rgba(15, 23, 42, 0.05),
+      0 18px 48px rgba(15, 23, 42, 0.14),
+      0 6px 14px rgba(15, 23, 42, 0.09);
+    --glass-edge-accent: color-mix(in oklab, var(--circle) 22%, transparent);
   }
 
   .dark {
@@ -48,6 +68,25 @@
     --border: rgba(245, 245, 245, 0.12);
     --circle: #2d7ad9;
     --circle-fg: #ffffff;
+
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-bg-hover: rgba(255, 255, 255, 0.1);
+    --glass-blur: 20px;
+    --glass-saturate: 150%;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-bevel-tl: rgba(255, 255, 255, 0.14);
+    --glass-bevel-br: rgba(255, 255, 255, 0.05);
+    --glass-spec: rgba(255, 255, 255, 0.16);
+    --glass-sheen: rgba(255, 255, 255, 0.12);
+    --glass-shadow:
+      0 1px 1px rgba(0, 0, 0, 0.3),
+      0 8px 28px rgba(0, 0, 0, 0.45),
+      0 2px 6px rgba(0, 0, 0, 0.35);
+    --glass-shadow-hover:
+      0 1px 1px rgba(0, 0, 0, 0.35),
+      0 18px 48px rgba(0, 0, 0, 0.6),
+      0 6px 14px rgba(0, 0, 0, 0.45);
+    --glass-edge-accent: color-mix(in oklab, var(--circle) 34%, transparent);
   }
 }
 
@@ -76,50 +115,88 @@ body {
 .rounded-inherit { border-radius: inherit; }
 
 /* Liquid glass adaptativo light/dark — para cards de proyectos, blog, etc. */
-.glass-card {
+/* ── Liquid glass — sistema compartido (Proyectos + Certificaciones) ── */
+.glass-card,
+.cert-card {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
   box-shadow:
-    inset 1px 1px 0 0 rgba(255, 255, 255, 0.7),
-    inset -1px -1px 0 0 rgba(255, 255, 255, 0.3),
-    0 8px 28px rgba(15, 23, 42, 0.08),
-    0 2px 6px rgba(15, 23, 42, 0.05);
+    inset 1.5px 1.5px 0 0 var(--glass-bevel-tl),
+    inset -1px -1px 0 0 var(--glass-bevel-br),
+    inset 0 0 0 1px var(--glass-edge-accent),
+    var(--glass-shadow);
   transition:
     background-color 0.4s ease,
     border-color 0.4s ease,
-    box-shadow 0.4s ease,
-    transform 0.4s ease;
+    box-shadow 0.45s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.glass-card:hover {
-  background: rgba(255, 255, 255, 0.7);
+.glass-card:hover,
+.cert-card:hover {
+  background: var(--glass-bg-hover);
   box-shadow:
-    inset 1px 1px 0 0 rgba(255, 255, 255, 0.8),
-    inset -1px -1px 0 0 rgba(255, 255, 255, 0.4),
-    0 14px 40px rgba(15, 23, 42, 0.12),
-    0 4px 10px rgba(15, 23, 42, 0.08);
+    inset 1.5px 1.5px 0 0 var(--glass-bevel-tl),
+    inset -1px -1px 0 0 var(--glass-bevel-br),
+    inset 0 0 0 1px var(--glass-edge-accent),
+    var(--glass-shadow-hover);
 }
-.dark .glass-card {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow:
-    inset 1px 1px 0 0 rgba(255, 255, 255, 0.08),
-    inset -1px -1px 0 0 rgba(255, 255, 255, 0.04),
-    0 8px 28px rgba(0, 0, 0, 0.45),
-    0 2px 6px rgba(0, 0, 0, 0.35);
+/* Lip especular superior + brillo que barre en hover (solo background-position) */
+.glass-card::before,
+.cert-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    linear-gradient(
+      105deg,
+      transparent 30%,
+      var(--glass-sheen) 45%,
+      var(--glass-spec) 50%,
+      var(--glass-sheen) 55%,
+      transparent 70%
+    ),
+    linear-gradient(180deg, var(--glass-spec) 0%, transparent 18%);
+  background-size: 250% 100%, 100% 100%;
+  background-position: 200% 0, 0 0;
+  background-repeat: no-repeat;
+  opacity: 0.9;
 }
-.dark .glass-card:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.16);
-  box-shadow:
-    inset 1px 1px 0 0 rgba(255, 255, 255, 0.12),
-    inset -1px -1px 0 0 rgba(255, 255, 255, 0.06),
-    0 14px 40px rgba(0, 0, 0, 0.55),
-    0 4px 10px rgba(0, 0, 0, 0.4);
+.glass-card:hover::before,
+.cert-card:hover::before {
+  background-position: -120% 0, 0 0;
+  transition: background-position 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Glint de acento (refracción ligera, sin filtro SVG — cero costo extra).
+   El contenido vive en z mayor (gradient-card__content z-2 / cert .z-10),
+   así que el texto queda intacto. */
+.glass-card::after,
+.cert-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    120% 80% at 15% 0%,
+    var(--glass-edge-accent) 0%,
+    transparent 55%
+  );
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+.dark .glass-card::after,
+.dark .cert-card::after {
+  mix-blend-mode: plus-lighter;
+  opacity: 0.5;
 }
 
 /* View Transitions API: el nuevo tema entra con clip-path circular sobre el viejo */
@@ -186,49 +263,7 @@ body {
   height: 100%;
 }
 
-/* ── Liquid glass cards (Certificaciones) ─────────────────────── */
-.cert-card {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  box-shadow:
-    inset 1px 1px 0 0 rgba(255, 255, 255, 0.7),
-    inset -1px -1px 0 0 rgba(255, 255, 255, 0.3),
-    0 8px 28px rgba(15, 23, 42, 0.08);
-}
-.dark .cert-card {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow:
-    inset 1px 1px 0 0 rgba(255, 255, 255, 0.08),
-    inset -1px -1px 0 0 rgba(255, 255, 255, 0.04),
-    0 8px 28px rgba(0, 0, 0, 0.45);
-}
-/* highlight superior tipo cristal */
-.cert-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.25) 0%,
-    transparent 42%
-  );
-  z-index: 0;
-}
-.dark .cert-card::before {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    transparent 42%
-  );
-}
+/* .cert-card ahora usa el sistema liquid-glass compartido (arriba). */
 
 /* ── Easter egg: esquirlas de vidrio realistas ────────────────── */
 .glass-shard {
@@ -246,8 +281,6 @@ body {
   box-shadow:
     0 6px 16px rgba(15, 23, 42, 0.2),
     inset 0 0 10px rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
   z-index: 60;
   will-change: transform, opacity;
   animation: shardFade 1.9s ease-out forwards;
@@ -299,9 +332,23 @@ body {
   }
 }
 
+.cert-destroy-mode {
+  contain: layout;
+}
 .cert-destroy-mode .cert-body {
   position: absolute;
   margin: 0;
   touch-action: none;
   will-change: transform;
+}
+
+/* ── prefers-reduced-motion: apaga el barrido de brillo del glass ── */
+@media (prefers-reduced-motion: reduce) {
+  .glass-card::before,
+  .cert-card::before,
+  .glass-card:hover::before,
+  .cert-card:hover::before {
+    transition: none;
+    background-position: 200% 0, 0 0;
+  }
 }

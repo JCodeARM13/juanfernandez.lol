@@ -25,8 +25,8 @@ const ABOUT_RIGHT = {
 };
 
 export const HeroCircle: React.FC<HeroCircleProps> = ({
-  imageBwSrc = "/juan-bn.png",
-  imageColorSrc = "/juan-color.png",
+  imageBwSrc = "/juan-bn.jpg",
+  imageColorSrc = "/juan-color.jpg",
   name = "Juan Fernández",
   tagline = "Operations Lead. Mobility · CX · Growth.",
   location = "Tlalnepantla, MX",
@@ -103,7 +103,7 @@ export const HeroCircle: React.FC<HeroCircleProps> = ({
         {/* About-me lateral izquierdo — operaciones */}
         <motion.aside
           style={{ opacity: aboutOpacity, y: aboutY }}
-          className="absolute left-5 md:left-12 lg:left-20 top-1/2 -translate-y-1/2 z-30
+          className="hidden md:block absolute left-5 md:left-12 lg:left-20 top-1/2 -translate-y-1/2 z-30
                      max-w-[44%] sm:max-w-xs md:max-w-sm lg:max-w-md text-white"
         >
           <p className="text-[10px] md:text-xs font-mono uppercase tracking-[0.3em] text-white/60 mb-4 md:mb-6">
@@ -123,7 +123,7 @@ export const HeroCircle: React.FC<HeroCircleProps> = ({
         {/* About-me lateral derecho — humanidad */}
         <motion.aside
           style={{ opacity: aboutOpacity, y: aboutY }}
-          className="absolute right-5 md:right-12 lg:right-20 top-1/2 -translate-y-1/2 z-30
+          className="hidden md:block absolute right-5 md:right-12 lg:right-20 top-1/2 -translate-y-1/2 z-30
                      max-w-[44%] sm:max-w-xs md:max-w-sm lg:max-w-md text-white text-right"
         >
           <p className="text-[10px] md:text-xs font-mono uppercase tracking-[0.3em] text-white/60 mb-4 md:mb-6">
@@ -178,6 +178,7 @@ export const HeroCircle: React.FC<HeroCircleProps> = ({
                 <motion.img
                   src={imageColorSrc}
                   alt={name}
+                  fetchPriority="high"
                   onError={() => setColorError(true)}
                   style={{
                     opacity: colorOpacity,
@@ -193,7 +194,7 @@ export const HeroCircle: React.FC<HeroCircleProps> = ({
                 <div className="absolute bottom-0 h-[40vh] w-full flex items-center justify-center text-center text-white/85 text-xs uppercase tracking-widest">
                   Subir foto a<br />
                   <code className="font-mono normal-case mt-2 opacity-90">
-                    /public/juan-color.png
+                    /public/juan-color.jpg
                   </code>
                 </div>
               )}

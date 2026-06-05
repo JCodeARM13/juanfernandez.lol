@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import QRCodeStyling from "qr-code-styling";
+import { motion, useReducedMotion } from "framer-motion";
 import { HeroCircle } from "@/components/hero-circle";
 import { Manifesto } from "@/components/manifesto";
 import { Companies } from "@/components/companies";
@@ -21,22 +20,31 @@ const WHATSAPP_URL = "https://wa.me/525548869123";
 
 const WhatsAppQR: React.FC = () => {
   const ref = React.useRef<HTMLDivElement | null>(null);
+  const prefersReduced = useReducedMotion();
 
   React.useEffect(() => {
-    const container = ref.current;
-    if (!container) return;
-    container.replaceChildren();
-    const qr = new QRCodeStyling({
-      width: 220,
-      height: 220,
-      data: WHATSAPP_URL,
-      type: "svg",
-      backgroundOptions: { color: "transparent" },
-      dotsOptions: { color: "#ffffff", type: "rounded" },
-      cornersSquareOptions: { color: "#ffffff", type: "extra-rounded" },
-      cornersDotOptions: { color: "#ffffff", type: "dot" },
+    if (!ref.current) return;
+    let cancelled = false;
+    // qr-code-styling se carga bajo demanda (fuera del bundle inicial).
+    import("qr-code-styling").then(({ default: QRCodeStyling }) => {
+      const container = ref.current;
+      if (cancelled || !container) return;
+      container.replaceChildren();
+      const qr = new QRCodeStyling({
+        width: 220,
+        height: 220,
+        data: WHATSAPP_URL,
+        type: "svg",
+        backgroundOptions: { color: "transparent" },
+        dotsOptions: { color: "#ffffff", type: "rounded" },
+        cornersSquareOptions: { color: "#ffffff", type: "extra-rounded" },
+        cornersDotOptions: { color: "#ffffff", type: "dot" },
+      });
+      qr.append(container);
     });
-    qr.append(container);
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (
@@ -52,22 +60,25 @@ const WhatsAppQR: React.FC = () => {
           background:
             "conic-gradient(from 0deg, #1f5fa4, #ec4899, #f59e0b, #10b981, #3b82f6, #1f5fa4)",
         }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+        animate={prefersReduced ? undefined : { rotate: 360 }}
+        transition={
+          prefersReduced
+            ? undefined
+            : { duration: 10, repeat: Infinity, ease: "linear" }
+        }
       />
 
       {/* Pulso del border-glow — respiración suave que llama la atención. */}
       <motion.div
         aria-hidden
         className="absolute -inset-1 rounded-3xl pointer-events-none"
-        animate={{
-          boxShadow: [
-            "0 0 20px 0px rgba(255,255,255,0.25)",
-            "0 0 40px 4px rgba(255,255,255,0.55)",
-            "0 0 20px 0px rgba(255,255,255,0.25)",
-          ],
-        }}
-        transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+        style={{ boxShadow: "0 0 36px 3px rgba(255,255,255,0.5)" }}
+        animate={prefersReduced ? { opacity: 0.7 } : { opacity: [0.45, 1, 0.45] }}
+        transition={
+          prefersReduced
+            ? undefined
+            : { duration: 2.6, repeat: Infinity, ease: "easeInOut" }
+        }
       />
 
       {/* Glass card original encima de los efectos */}
@@ -88,8 +99,12 @@ const WhatsAppQR: React.FC = () => {
           </div>
           <motion.p
             className="text-xs opacity-80 flex items-center gap-2"
-            animate={{ opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+            animate={prefersReduced ? undefined : { opacity: [0.6, 1, 0.6] }}
+            transition={
+              prefersReduced
+                ? undefined
+                : { duration: 2.6, repeat: Infinity, ease: "easeInOut" }
+            }
           >
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-white" />
             Escanea o haz clic
