@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "name": "Papelería",
+    "version": "1.0.0",
+    "units": "mm",
+    "sizes": ["A4", "Carta", "A5", "A3", "A6", "Oficio"],
+    "universalControls": [
+      { "key": "size", "label": "Tamaño", "type": "select", "options": ["A4", "Carta", "A5", "A3", "A6", "Oficio"] },
+      { "key": "orientation", "label": "Orientación", "type": "select", "options": ["portrait", "landscape"] },
+      { "key": "lineColor", "label": "Color de línea", "type": "color" },
+      { "key": "bgColor", "label": "Color de fondo", "type": "color" },
+      { "key": "lineWeight", "label": "Grosor (mm)", "type": "range", "min": 0.08, "max": 0.8, "step": 0.02 },
+      { "key": "margin", "label": "Margen (mm)", "type": "range", "min": 0, "max": 25, "step": 1 }
+    ]
+  },
+  "formats": [
+    {
+      "id": "grid", "name": "Cuadrícula", "cat": "Cuaderno", "draw": "grid",
+      "desc": "Cuadrícula cuadrada clásica (graph paper).",
+      "params": { "spacing": 5, "lineColor": "#9db4d0", "lineWeight": 0.22, "margin": 8 },
+      "controls": [{ "key": "spacing", "label": "Separación (mm)", "type": "range", "min": 2, "max": 15, "step": 0.5 }]
+    },
+    {
+      "id": "ruled", "name": "Líneas (rayado)", "cat": "Cuaderno", "draw": "ruled",
+      "desc": "Líneas horizontales con margen lateral opcional.",
+      "params": { "spacing": 8, "lineColor": "#aebfd4", "lineWeight": 0.28, "marginLine": true, "marginLeft": 28, "marginColor": "#e7a2a2", "margin": 12 },
+      "controls": [
+        { "key": "spacing", "label": "Interlínea (mm)", "type": "range", "min": 5, "max": 14, "step": 0.5 },
+        { "key": "marginLine", "label": "Margen rojo", "type": "bool" },
+        { "key": "marginLeft", "label": "Margen izq (mm)", "type": "range", "min": 10, "max": 45, "step": 1 }
+      ]
+    },
+    {
+      "id": "dots", "name": "Punteado (dot grid)", "cat": "Cuaderno", "draw": "dots",
+      "desc": "Rejilla de puntos estilo bullet journal.",
+      "params": { "spacing": 5, "dotRadius": 0.35, "lineColor": "#b3b8bf", "margin": 8 },
+      "controls": [
+        { "key": "spacing", "label": "Separación (mm)", "type": "range", "min": 3, "max": 12, "step": 0.5 },
+        { "key": "dotRadius", "label": "Tamaño punto (mm)", "type": "range", "min": 0.15, "max": 0.8, "step": 0.05 }
+      ]
+    },
+    {
+      "id": "blank", "name": "En blanco / marco", "cat": "Cuaderno", "draw": "blank",
+      "desc": "Hoja en blanco, con marco opcional.",
+      "params": { "frame": false, "lineColor": "#c8ced6", "margin": 10 },
+      "controls": [{ "key": "frame", "label": "Marco", "type": "bool" }]
+    },
+
+    {
+      "id": "iso", "name": "Isométrico", "cat": "Técnico", "draw": "iso",
+      "desc": "Rejilla triangular a 30° para dibujo isométrico.",
+      "params": { "spacing": 5, "lineColor": "#bcd0e6", "lineWeight": 0.18, "margin": 8 },
+      "controls": [{ "key": "spacing", "label": "Separación (mm)", "type": "range", "min": 3, "max": 12, "step": 0.5 }]
+    },
+    {
+      "id": "hex", "name": "Hexagonal", "cat": "Técnico", "draw": "hex",
+      "desc": "Rejilla hexagonal (juegos de mesa, química, mapas).",
+      "params": { "hexSize": 8, "lineColor": "#c2c8d0", "lineWeight": 0.25, "margin": 8 },
+      "controls": [{ "key": "hexSize", "label": "Radio hex (mm)", "type": "range", "min": 4, "max": 18, "step": 0.5 }]
+    },
+    {
+      "id": "mm", "name": "Milimétrico", "cat": "Técnico", "draw": "mm",
+      "desc": "Papel milimétrico: 1 / 5 / 10 mm con peso creciente.",
+      "params": { "lineColor": "#4f86c6", "margin": 8 },
+      "controls": []
+    },
+    {
+      "id": "semilog", "name": "Semilogarítmico", "cat": "Técnico", "draw": "semilog",
+      "desc": "Eje X lineal, eje Y logarítmico por décadas.",
+      "params": { "decades": 4, "spacing": 5, "lineColor": "#7fa8d8", "margin": 12 },
+      "controls": [
+        { "key": "decades", "label": "Décadas", "type": "range", "min": 1, "max": 6, "step": 1 },
+        { "key": "spacing", "label": "X separación (mm)", "type": "range", "min": 3, "max": 12, "step": 0.5 }
+      ]
+    },
+    {
+      "id": "perspective", "name": "Perspectiva", "cat": "Técnico", "draw": "perspective",
+      "desc": "Guías de perspectiva de 1 o 2 puntos de fuga.",
+      "params": { "points": 2, "rays": 24, "horizon": 0.45, "lineColor": "#cabfb0", "margin": 8 },
+      "controls": [
+        { "key": "points", "label": "Puntos de fuga", "type": "select", "options": [1, 2] },
+        { "key": "rays", "label": "Líneas guía", "type": "range", "min": 12, "max": 48, "step": 2 },
+        { "key": "horizon", "label": "Horizonte", "type": "range", "min": 0.1, "max": 0.9, "step": 0.05 }
+      ]
+    },
+
+    {
+      "id": "cornell", "name": "Cornell notes", "cat": "Estudio", "draw": "cornell",
+      "desc": "Método Cornell: columna de claves, notas y resumen.",
+      "params": { "cueWidth": 62, "summaryH": 48, "headerH": 18, "lineSpacing": 8, "lineColor": "#b9c6d6", "lineWeight": 0.25, "margin": 12 },
+      "controls": [
+        { "key": "cueWidth", "label": "Columna claves (mm)", "type": "range", "min": 40, "max": 80, "step": 1 },
+        { "key": "summaryH", "label": "Resumen (mm)", "type": "range", "min": 25, "max": 70, "step": 1 },
+        { "key": "lineSpacing", "label": "Interlínea (mm)", "type": "range", "min": 6, "max": 12, "step": 0.5 }
+      ]
+    },
+    {
+      "id": "planner-day", "name": "Planner diario", "cat": "Estudio", "draw": "plannerDay",
+      "desc": "Agenda por horas + prioridades y notas.",
+      "params": { "startHour": 6, "endHour": 22, "sideWidth": 55, "lineColor": "#c3ccd6", "lineWeight": 0.25, "margin": 10 },
+      "controls": [
+        { "key": "startHour", "label": "Hora inicio", "type": "range", "min": 0, "max": 12, "step": 1 },
+        { "key": "endHour", "label": "Hora fin", "type": "range", "min": 13, "max": 24, "step": 1 }
+      ]
+    },
+    {
+      "id": "planner-week", "name": "Planner semanal", "cat": "Estudio", "draw": "plannerWeek",
+      "desc": "7 columnas de la semana con líneas.",
+      "params": { "weekStart": "mon", "lineSpacing": 8, "lineColor": "#c3ccd6", "lineWeight": 0.25, "margin": 10 },
+      "controls": [
+        { "key": "weekStart", "label": "Inicia en", "type": "select", "options": ["mon", "sun"] },
+        { "key": "lineSpacing", "label": "Interlínea (mm)", "type": "range", "min": 5, "max": 12, "step": 0.5 }
+      ]
+    },
+    {
+      "id": "calendar-month", "name": "Calendario mensual", "cat": "Estudio", "draw": "calendar",
+      "desc": "Rejilla mensual 7×6. Opcional: mes y año para numerar.",
+      "params": { "weekStart": "mon", "lineColor": "#c3ccd6", "margin": 12 },
+      "controls": [
+        { "key": "weekStart", "label": "Inicia en", "type": "select", "options": ["mon", "sun"] },
+        { "key": "month", "label": "Mes (1-12, opcional)", "type": "range", "min": 0, "max": 12, "step": 1 },
+        { "key": "year", "label": "Año (opcional)", "type": "range", "min": 0, "max": 2100, "step": 1 }
+      ]
+    },
+    {
+      "id": "habit-tracker", "name": "Tracker de hábitos", "cat": "Estudio", "draw": "habit",
+      "desc": "Tabla hábitos × días del mes.",
+      "params": { "habits": 15, "days": 31, "lineColor": "#c3ccd6", "margin": 10 },
+      "controls": [
+        { "key": "habits", "label": "Hábitos", "type": "range", "min": 5, "max": 30, "step": 1 },
+        { "key": "days", "label": "Días", "type": "range", "min": 7, "max": 31, "step": 1 }
+      ]
+    },
+    {
+      "id": "todo", "name": "To-Do / checklist", "cat": "Estudio", "draw": "todo",
+      "desc": "Lista con casillas para marcar.",
+      "params": { "spacing": 11, "box": true, "lineColor": "#c3ccd6", "lineWeight": 0.25, "margin": 14 },
+      "controls": [
+        { "key": "spacing", "label": "Interlínea (mm)", "type": "range", "min": 7, "max": 16, "step": 0.5 },
+        { "key": "box", "label": "Casillas", "type": "bool" }
+      ]
+    },
+
+    {
+      "id": "music-staff", "name": "Pentagrama", "cat": "Música", "draw": "staff",
+      "desc": "Pentagramas en blanco para música.",
+      "params": { "staves": 12, "staffGap": 1.8, "lineColor": "#7a7a7a", "lineWeight": 0.22, "margin": 14 },
+      "controls": [
+        { "key": "staves", "label": "Pentagramas", "type": "range", "min": 4, "max": 18, "step": 1 },
+        { "key": "staffGap", "label": "Sep. líneas (mm)", "type": "range", "min": 1.2, "max": 3, "step": 0.1 }
+      ]
+    },
+    {
+      "id": "guitar-tab", "name": "Tablatura guitarra", "cat": "Música", "draw": "tab",
+      "desc": "Tablatura de 6 cuerdas en grupos.",
+      "params": { "groups": 8, "tabGap": 3, "lineColor": "#7a7a7a", "lineWeight": 0.22, "margin": 14 },
+      "controls": [
+        { "key": "groups", "label": "Grupos", "type": "range", "min": 4, "max": 14, "step": 1 },
+        { "key": "tabGap", "label": "Sep. cuerdas (mm)", "type": "range", "min": 2, "max": 5, "step": 0.2 }
+      ]
+    },
+    {
+      "id": "handwriting", "name": "Caligrafía / lettering", "cat": "Música", "draw": "handwriting",
+      "desc": "Renglones guía con línea media punteada.",
+      "params": { "xHeight": 9, "rowGap": 7, "lineColor": "#b9c6d6", "lineWeight": 0.3, "margin": 12 },
+      "controls": [
+        { "key": "xHeight", "label": "Altura x (mm)", "type": "range", "min": 5, "max": 18, "step": 0.5 },
+        { "key": "rowGap", "label": "Espacio entre renglones (mm)", "type": "range", "min": 3, "max": 14, "step": 0.5 }
+      ]
+    }
+  ]
+}

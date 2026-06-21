@@ -58,6 +58,15 @@ const PROJECTS: Project[] = [
     status: "Live",
     href: "https://ssv.jcfvg.com",
   },
+  {
+    number: "06",
+    title: "Papelería",
+    domain: "Herramienta personal",
+    blurb:
+      "Genera e imprime cualquier hoja —cuadrícula, pentagrama, planner, milimétrico— a tamaño exacto.",
+    status: "Live",
+    href: "/papeleria",
+  },
 ];
 
 export const Projects: React.FC = () => {
@@ -98,7 +107,9 @@ export const Projects: React.FC = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-          {PROJECTS.map((p, i) => (
+          {PROJECTS.map((p, i) => {
+            const internal = p.href?.startsWith("/");
+            return (
             <motion.div
               key={p.number}
               initial={{ opacity: 0, y: 30 }}
@@ -108,8 +119,8 @@ export const Projects: React.FC = () => {
             >
               <a
                 href={p.href || "#"}
-                target={p.href ? "_blank" : undefined}
-                rel={p.href ? "noopener noreferrer" : undefined}
+                target={p.href && !internal ? "_blank" : undefined}
+                rel={p.href && !internal ? "noopener noreferrer" : undefined}
                 onClick={p.href ? undefined : (e) => e.preventDefault()}
                 className="block h-full"
               >
@@ -151,7 +162,8 @@ export const Projects: React.FC = () => {
                 </GradientCard>
               </a>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
