@@ -261,6 +261,7 @@ export function CertShatter({ items }: { items: CertItem[] }) {
       pressStart.current = { x: e.clientX, y: e.clientY };
       if (pressTimer.current) clearTimeout(pressTimer.current);
       pressTimer.current = setTimeout(() => {
+        pressTimer.current = null;
         longPressFired.current = true;
         enterDestroy();
       }, LONG_PRESS_MS);
@@ -287,6 +288,30 @@ export function CertShatter({ items }: { items: CertItem[] }) {
     // en idle, click normal => deja que el <a href> abra el PDF al instante
   }, [mode]);
 
+  // Cierre de recursos al desmontar.
+  useEffect(() => {
+    return () => {
+      if (pressTimer.current) clearTimeout(pressTimer.current);
+      if (audioRef.current) {
+        audioRef.current.close().catch(() => {});
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  // Salir del modo destrucción si cambia tamaño/orientación: la geometría y
+  // las paredes se miden una sola vez al activar; en resize quedan desfasadas.
+  useEffect(() => {
+    if (mode !== "destroy") return;
+    const onResize = () => repair();
+    window.addEventListener("resize", onResize);
+    window.addEventListener("orientationchange", onResize);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("orientationchange", onResize);
+    };
+  }, [mode, repair]);
+
   // ── Mundo de física ──────────────────────────────────────────────
   useEffect(() => {
     if (mode !== "destroy") return;
@@ -310,6 +335,7 @@ export function CertShatter({ items }: { items: CertItem[] }) {
       const { Engine, Runner, Bodies, Body, Composite, Mouse, MouseConstraint, Events } = Matter;
 
       const engine = Engine.create();
+      engine.enableSleeping = true; // los cuerpos en reposo dejan de integrarse
       engine.gravity.y = 1.1;
       worldApi.current = { Composite, world: engine.world };
 
@@ -354,11 +380,12 @@ export function CertShatter({ items }: { items: CertItem[] }) {
           const el = cardRefs.current[i];
           const g = geom[i];
           if (!body || !el || !g) continue;
+          if (body.isSleeping) continue; // ya asentado: no reescribir transform
           el.style.transform = `translate(${body.position.x - g.cx}px, ${body.position.y - g.cy}px) rotate(${body.angle}rad)`;
         }
         fragBodies.current.forEach((fb, id) => {
           const el = fragEls.current.get(id);
-          if (!el) return;
+          if (!el || fb.body.isSleeping) return;
           el.style.transform = `translate(${fb.body.position.x - fb.ox}px, ${fb.body.position.y - fb.oy}px) rotate(${fb.theta + fb.body.angle}rad)`;
         });
       };
@@ -398,6 +425,7 @@ export function CertShatter({ items }: { items: CertItem[] }) {
         const newFrags: Fragment[] = [];
 
         for (const poly of polys) {
+          if (fragBodies.current.size >= 110) break; // cap de rendimiento
           const cl = centroid(poly);
           // vértices centrados y rotados a la orientación del cert al romperse
           const verts = poly.map((p) => {

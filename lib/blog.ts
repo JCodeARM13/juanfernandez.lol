@@ -23,17 +23,45 @@ export type Post = PostMeta & {
   raw: string;
 };
 
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+// Permite http(s)/mailto/tel, rutas relativas, anclas y data:image.
+// Bloquea javascript:, vbscript:, data:text/html, etc.
+function safeUrl(u: string): string {
+  const t = (u ?? "").trim();
+  if (/^(https?:|mailto:|tel:)/i.test(t)) return t;
+  if (/^(\/|\.\/|#)/.test(t)) return t;
+  if (/^data:image\//i.test(t)) return t;
+  return "";
+}
+
 const renderer = new marked.Renderer();
 renderer.image = ({ href, title, text }) => {
-  const safeAlt = (text ?? "").replace(/"/g, "&quot;");
-  const safeTitle = title ? ` title="${title.replace(/"/g, "&quot;")}"` : "";
+  const safeAlt = escapeHtml(text ?? "");
+  const safeTitle = title ? ` title="${escapeHtml(title)}"` : "";
   const hrefStr = typeof href === "string" ? href.trim() : "";
   const isPlaceholder = !hrefStr || hrefStr.startsWith("PLACEHOLDER_");
   if (isPlaceholder) {
-    const dataAttr = hrefStr ? ` data-placeholder="${hrefStr}"` : "";
+    const dataAttr = hrefStr ? ` data-placeholder="${escapeHtml(hrefStr)}"` : "";
     return `<figure class="post-image post-image-placeholder"${dataAttr}><div class="post-image-frame" role="img" aria-label="${safeAlt}"><span class="post-image-tag">Imagen pendiente</span><span class="post-image-alt">${safeAlt}</span></div><figcaption>${safeAlt}</figcaption></figure>`;
   }
-  return `<figure class="post-image"><img src="${hrefStr}" alt="${safeAlt}"${safeTitle} loading="lazy" /><figcaption>${safeAlt}</figcaption></figure>`;
+  const src = safeUrl(hrefStr);
+  if (!src) return `<figure class="post-image"><figcaption>${safeAlt}</figcaption></figure>`;
+  return `<figure class="post-image"><img src="${escapeHtml(src)}" alt="${safeAlt}"${safeTitle} loading="lazy" /><figcaption>${safeAlt}</figcaption></figure>`;
+};
+// Links del markdown: bloquea esquemas peligrosos y endurece externos.
+// (No afecta iframes embebidos como HTML crudo —p.ej. Apple Music—.)
+renderer.link = ({ href, title, text }) => {
+  const url = safeUrl(typeof href === "string" ? href : "");
+  if (!url) return text;
+  const t = title ? ` title="${escapeHtml(title)}"` : "";
+  const rel = /^https?:/i.test(url) ? ` target="_blank" rel="noopener noreferrer"` : "";
+  return `<a href="${escapeHtml(url)}"${t}${rel}>${text}</a>`;
 };
 
 marked.setOptions({

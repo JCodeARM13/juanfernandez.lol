@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 type Company = {
   name: string;
@@ -23,6 +23,7 @@ const COMPANIES: Company[] = [
 const TRACK = [...COMPANIES, ...COMPANIES, ...COMPANIES];
 
 export const Companies: React.FC = () => {
+  const prefersReduced = useReducedMotion();
   return (
     <section
       id="trayectoria"
@@ -79,12 +80,12 @@ export const Companies: React.FC = () => {
       >
         <motion.ul
           className="flex items-center gap-6 md:gap-8 w-max"
-          animate={{ x: ["-33.333%", "0%"] }}
-          transition={{
-            duration: 35,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          animate={prefersReduced ? undefined : { x: ["-33.333%", "0%"] }}
+          transition={
+            prefersReduced
+              ? undefined
+              : { duration: 35, repeat: Infinity, ease: "linear" }
+          }
         >
           {TRACK.map((c, i) => (
             <li key={`${c.name}-${i}`} className="shrink-0">
@@ -96,7 +97,7 @@ export const Companies: React.FC = () => {
                 aria-label={`${c.name} — abrir sitio oficial`}
                 className="logo-pill flex items-center justify-center
                            h-24 md:h-28 w-44 md:w-56
-                           rounded-2xl bg-white border border-black/5
+                           rounded-2xl bg-white border border-black/5 dark:border-white/10
                            transition-all duration-300
                            hover:scale-[1.04] hover:shadow-lg hover:shadow-black/10"
               >
